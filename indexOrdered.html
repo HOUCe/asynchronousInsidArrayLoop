@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="output">
+
+    </div>
+    <script>
+        var array = ['h','e','l','l','o'];
+
+        var fetchData = function (item) {
+         return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                resolve(item);
+            }, Math.floor(Math.random() * 2) * 200);
+          });
+        };
+
+        let outArray = array.map(function () {
+            return '';
+        });
+        let finished = 0;
+
+        for (let i = 0; i < array.length; i++) {
+          fetchData(array[i]).then(function (item) {
+            outArray[i] = item;
+            finished++;
+            if (finished === array.length) {
+                output.innerHTML = outArray.join('');
+            }
+          });
+        }
+    </script>
+</body>
+
+</html>
